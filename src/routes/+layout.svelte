@@ -5,5 +5,7 @@
 </script>
 
 <Header />
-<slot />
+<main class="h-[85vh]">
+	<slot />
+</main>
 <Footer />

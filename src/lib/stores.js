@@ -1,6 +1,30 @@
 import { writable } from 'svelte/store';
-export let todos = writable([
-	{ id: 1, text: 'a task' },
-	{ id: 2, text: 'second task' },
-	{ id: 3, text: 'third task' }
-]);
+
+export function createTodos(initialValue = []) {
+	const { subscribe, set, update } = writable(initialValue);
+
+	return {
+		subscribe,
+		add(input, id) {
+			const todo = {
+				id,
+				text: input.value
+			};
+			update((prev) => {
+				return [todo, ...prev];
+			});
+		},
+		remove(todo) {
+			update((prev) => {
+				return prev.filter((t) => t !== todo);
+			});
+		},
+		toggle(todo, done) {
+			todo.done = done;
+			this.remove(todo);
+			update((prev) => {
+				return prev.concat(todo);
+			});
+		}
+	};
+}

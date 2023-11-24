@@ -17,7 +17,8 @@
 	<h2 class="text-2xl">Supabase Tasks</h2>
 	<ul>
 		{#each supabaseTodos as todo}
-			<p>{todo.text}</p>
+			<h3 class="text-xl">{todo.title}</h3>
+			<p>{todo.description}</p>
 		{/each}
 	</ul>
 </section>

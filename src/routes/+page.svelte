@@ -2,7 +2,6 @@
 	import TodoView from '$lib/components/TodoView.svelte';
 	export let data;
 	let { todos } = data;
-	console.log(todos);
 </script>
 
 <header class="bg-blue-200 h-1/5 grid place-items-center">
